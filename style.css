@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 	margin: 0 auto;
 	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -12,17 +13,21 @@ h2{
 	font-size: 28px;
 	font-weight: 400;
 	text-transform: uppercase;
-	font-family: Montserat;
 	font-weight: bold;
 	color:#333;
+	font-family: Arial, Helvetica, sans-serif;
 }
 p{
 	font-size: 15px;
-	font-family: Open Sans;
 	line-height: 30px;
 	padding-top: 20px;
 	color: #6C6C6C;
+	font-family: Arial, Helvetica, sans-serif;
 } 
+
+input,textarea{
+	outline: none;
+}
 /*/////////HEADER///////////*/
 
 header{
@@ -32,6 +37,7 @@ header{
   min-height: 80px;
   position: sticky;
   top: 0;
+  z-index: 111;
 }
 .nav_content{
 	min-height: 80px;
@@ -250,7 +256,7 @@ nav ul li a:hover{
     animation: wobble 1s ease;
 }
 @keyframes wobble {
-    from {
+    0% {
     	background-color: #333;
     	border:1px solid #fff;
     }
@@ -262,7 +268,7 @@ nav ul li a:hover{
     	transform: skewX(15deg);
     	/*background-color: blue;*/
     }
-    to {
+    100%{
         background-color: #333;
         border:1px solid #333;
     }
@@ -351,26 +357,27 @@ nav ul li a:hover{
 	width: 100%;
 	display: block;
 	background-color: none;
+	height: auto;
 }
 .portfolio_content{
 	width: 100%;
 	background-color: none;
-	min-height: 700px;
+	height: auto;
 	padding-top:5%;
+	padding-bottom: 2em;
 }
 .portfolio_text{
-	width: 50%;
+	width: 100%;
 	background-color: none;
 	text-align: center;
 }
-.little_square_content{
+.portfolio__list{
 	width: 100%;
-	height: 80px;
 	background-color: none;
 	text-align: left;
 	margin-top: 30px;
 }
-.little_square_content ul li{
+.portfolio__list ul li{
 	display: inline-block;
 	list-style-type: none;
 	padding-left: 30px;
@@ -382,73 +389,70 @@ nav ul li a:hover{
 	padding-top: 30px;
 	padding-left: 30px;
 }
-.little_square_content li:before{
+.portfolio__list li:before{
 	content: "__";
 	background-color: #198CE7;
     top: 15px;
-    width: 10px;
-    height: 10px;
+	margin-right: .5em;
 }
 /*////////////////////////rotate_section/////////////*/
 
 
 .portfolio_items{
-	/*width: 100%;*/
+	width: 100%;
 	display: grid;
 	grid-template-columns: 350px 350px 350px;
 	grid-gap: 20px;
 	justify-content: center;
 	align-items: center;
+	padding-top: 1em;
+}
+.portfolio_item{
+	width: 100%;
+	position: relative;
+	height: auto;
 }
 .portfolio_square{
-	min-width: 350px;
-	min-height: 350px;
+	width: 350px;
+	height: 350px;
 	background-color: none;
 	background-size: contain;
 	background-repeat: no-repeat; 
+	transition: all .3s ease-in-out;
 }
 
-.portfolio_square:before {
-    position: absolute;
-    top: 2%;
-    left: 2%;
-    width: 100%;
-    height: 100%;
-    content: "";
-    background: #fff;
-    opacity: 0.3;
-    transform: scale(0);
-    transition: all .3s ease-in-out;
+.portfolio_item:hover .portfolio_hover{
+    transform: scale(.8);
+	opacity: 1;
 }
-.portfolio_item:hover{
-    transform: scale(.9);
-}
-.portfolio_item:hover{
-    opacity: 1;
-}
+
 .portfolio_hover{
+	width: 100%;
+	height:  100%;
 	top:0;
-	left: 0
-    width: 90%;
-    height: 90%;
+	left: 0;
+	position: absolute;
+	opacity: 0;
     flex-direction: column;
+	background-color: rgba(235, 235, 235, 0.63);
     display: flex;
-    justify-content: center;
+	align-items: center;
     text-align: center;
-    opacity: 0;
-    transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out; 
 }
 
 .portfolio_hover h3{ 
+	margin-top: 5em;
     text-transform: uppercase;
-    color: #333;
+    color: rgb(0, 0, 0);
     font-size: 22px;
     margin-bottom: 15px;
 }
 
 .portfolio_hover a{
-    color: #000;
+    color: rgb(0, 0, 0);
     text-transform: uppercase;
+	text-decoration: none;
     letter-spacing: 1px;
     font-size: 18px;
     display: inline-block;
@@ -458,28 +462,31 @@ nav ul li a:hover{
 
 .contact_me{
 	width: 100%;
-	min-height: 150px;
+	height: auto;
 	display: flex;
 	background-color: #333;
 }
 .contact_content{
 	width: 100%;
-	padding: 30px;
 	display: flex;
-	background-color: gnone;
+	background-color: none;
+	padding-top: 3em;
+	padding-bottom: 2em;
 }
-.like_work h3{
+.contact__text h3{
 	font-size: 20px;
     font-weight: 400;
     text-transform: capitalize;
+	color: #fff !important;
 }
-.like_work p{
+.contact__text p{
 	color: #fff;
     font-size: 17px;
     font-weight: 400;
 }
 .contact_content a button{
 	width: 150px;
+	cursor: pointer;
 	height: 50px;
 	margin-top: 25px; 
 	background-color: #198CE7;
@@ -516,60 +523,72 @@ nav ul li a:hover{
 }
 .resume_item{
 	font-weight: 300;
-	min-height: 210px;
+	height: auto;
 	background-color: #fff;
 	text-align: left;
 	vertical-align: middle;
-	border-top:1px solid grey;
-	border-right: 1px solid grey;
-	border-left: 1px solid grey;
-	border-bottom: 1px solid #198Ce7;
-	padding-left: 10px;
+	border: 1px solid rgb(201, 201, 201);
+	margin-bottom: 2em;
+	padding: 1em;
+	position: relative;
 }
 .resume_item h3{
 	font-size: 20px;
 	color: #198CE7;
 	text-transform: capitalize;
 }
+.resume_item h3 i{
+	margin-right: 1em;
+}
 .resume_item p{
-	font-size: 16px;
-
+	font-size: 14px;
+	padding-bottom: 1em;
 }
 .resume_item a{
-	font-size: 14px;
+	font-size: 13px;
 	color:black;
-	text-transform: uppercase;
 	text-decoration: none;
 	font-weight: bold;
 }
-.resume_item:hover{
-	transition: .5s;
-	border-bottom: 5px solid #2098D1; 
+.resume_item::after { 
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	display: block;
+	background: none repeat scroll 0 0 transparent;
+	height: 2px;
+	opacity: 0;
+	background: #fff;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
-.before:before{
-	content: "__";
-	background-color: #198CE7;
-    top: 15px;
-    width: 10px;
-    height: 10px;
-} 
+
+a:hover::after,
+a:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
 
 /*/////////////////////////////CLIENT SECTION///////////////////////*/
 
 .clients_section{
 	width: 100%;
-	background-color: none;
 	display: block;
+	height: auto;
 }
-.clients_section .text{
-	width: 50%;
-	min-height: 150px;
+.clients_content{
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	padding-top: 1em;
+	padding-bottom: 3rem;
+}
+.clients_content .text{
+	width:100%;
+	height: auto;
+	padding: 3rem;
 	display: block;
 	background-color: none;
-	justify-content: center;
-	align-items: center;
-	padding-left: 30px;
-	padding-top: 20px;
 	text-align: center;
 	letter-spacing: 1px;
 }
@@ -581,41 +600,44 @@ nav ul li a:hover{
 	font-weight: bold;
 	color:#333333;
 }
-.clients_section .text p{
+.clients_content .text p{
 	font-size: 14px;
-    font-family: Open Sans;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 15px;
+	margin-top: 0.5em;
     color: #6C6C6C;
     text-align: center;
 }
-.review_content{
+.review__items{
+	width: 100%;
+	height: auto;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 30px;
-	grid-row-gap: 20px;
+	gap: 20px;
 }
-.comment{
-	background-color: #F6F6F6;
-	min-height: 200px;
+.review__item .review__item__text{
+	width: 100%;
+	background-color: #f5f5f5;
+	height: auto;
     padding: 25px 50px 25px 50px;
-    position: relative;
     font-style: italic;
 	font-size: 15px;
-}
-.comment:hover{
-	border: 1px solid #198CE7;
 	transition: all 0.5s ease 0s;
+	position: relative;
 }
-.comment p{
+.review__item__text:hover{
+	border: 1px solid #198CE7;
+}
+.review__item__text p{
     font-size: 14px;
     font-style: italic;
-    position: relative;
 }
 
-.comment p:before{
+.review__item__text p:before{
+	content: '"';
     position: absolute;
     top: 20px;
-    left: -40px;
+    left: 0px;
     width: 100%;
     height: 100%;
     /*background-color: red;*/
@@ -624,30 +646,34 @@ nav ul li a:hover{
     font-family: fontawesome;
     font-size: 70px;
 }
-.client_comment{
-	background-color: none;
+.client__comment{
 	width: 100%;
-	min-height: 200px;
+	display: flex;
+	height: auto;
+	margin-top: 1em;
 }
-.client_comment h3{
+.client__comment__text {
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	margin-left: 1em;
+}
+.client__comment__text h3{
 	color: #333;
     font-size: 22px;
     text-transform: capitalize;
 }
-.client_comment p{
+.client__comment__text p{
 	color: #333;
     font-size: 16px;
-    padding-top: 0px;
+	padding: 5px;
 }
-.client_comment .client_img{
+.client__comment img{
 	display: flex;
-    float: left;
-    width: 50px;
-    height: 70px;
-    background-image: url(https://asadfahim.me/demos/tayma/assets/img/t-1.jpg);
+    width: 60px;
+    height: 60px;
     background-repeat: no-repeat;
     background-size: contain;
-    transition: all 0.3s ease-in-out 0s;
 }
 
 /*//////////////////////CUPS CONTENT///////////////////////*/
@@ -707,76 +733,71 @@ nav ul li a:hover{
 	width: 100%;
 	background-color: none;
 	display: block;
+	padding-top: 1em;
+	padding-bottom: 2em;
 }
-.meetings_section{
+.blog_content .text{
+	width: 100%;
+	display: inline-block;
+	height: auto;
+	padding-top: 1em;
+	text-align: center;
+	padding-bottom: 2em;
+}
+.blog__items{
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 20px;
 	justify-content: center;
-	align-items: center;
 }
-.meetings{
+.blog__item{
 	width: 100%;
-	min-height: 480px;
+	height: auto;
 	display: block;
 	background-color: #fff;
 	text-align: left;
 	color:#198CE7;
-	margin-bottom: 50px;
+	padding: 1em;
 }
-.meetings h3{
+.blog__item__text h3{
 	color:#333;
 	font-size: 27px;
     text-transform: capitalize;
     font-weight: 300;
-    padding-left: 10px;
     letter-spacing: 1px;
+	margin-top: 1em;
 }
-.meetings p{
-	padding:10px;
+.blog__item__text p{
+	margin-bottom: 1em;
 }
-.meetings .img{
+.blog__item .img{
 	width: 100%;
 	height: 300px;
 	background-repeat: no-repeat;
 	background-size: contain;
 }
-.meetings .schedule ul{
+.blog__item .date{
 	width: 100%;
-	height: 20px;
-	display: flex;
-	list-style: none;
+	height: auto;
+	display: block;
 	color:#198CE7;
 }
-.meetings .read{
+.blog__item__text a{
 	color: #333;
     font-size: 16px;
     font-weight: bold;
-    padding-top: 25px;
-    padding-left: 10px;
+	margin-top: 1em;
     text-decoration: none;
 }
-.meetings .read:hover{
+.blog__item__text a:hover{
 	color: #198ce7;
-	transition: all .5s ease;
-	border-bottom: 3px solid #198Ce7;
-}
-.blog_content .text{
-	width: 50%;
-	min-height: 150px;
-	display: block;
-	background-color: none;
-	justify-content: center;
-	align-items: center;
-	padding-left: 30px;
-	padding-top: 20px;
-	text-align: center;
+	transition: all .3s ease;
+	text-decoration: underline #198CE7;
 }
 
 .blog_content .text p{
 	font-size: 16px;
-    font-family: Open Sans;
     line-height: 15px;
     color: #6C6C6C;
     text-align: center;
@@ -814,6 +835,9 @@ nav ul li a:hover{
 
 .contact_section{
 	width: 100%;
+	display: flex;
+	height: auto;
+	padding-top: 2em;
 }
 .contact_content{
 	width: 100%;
@@ -825,37 +849,68 @@ nav ul li a:hover{
 }
 .contact_content h3{
 	padding-bottom: 15px; 
-	font-weight: 400;
+	font-weight: 100;
 	font-size: 25px;
+	color: #444;
+}
+.contact__input{
+	width: 100%;
+	display: flex;
+	height: auto;
 }
 .info{
 	background-color: none;
 	width: 100%;
-	min-height: 300px;
-	border: 1px solid grey;
+	height: auto;
+	display: inline-block;
 }
-.info_name{
+.contact_list li {
+   margin: 2em;
+    width: 100%;
+	color: #777;
+	list-style: none;
+}
+
+.contact_list li i{
+	width: 40px;
+	height: 40px;
+	border: 1px solid #198ce7;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+    border-radius: 50%;
+	margin-right: 1em;
+}
+.info .contact_list{
 	width: 100%;
-	min-height: 300px;
+	display: inline-block;
+	border: 1px solid rgb(197, 197, 197);
+}
+.contact__input__wrapper{
+	width: 100%;
+	height: auto;
 	display: block;
 }
-.info_name div input{
-	width: 250px;
+.contact__input input{
+	width: 100%;
 	background-color: none;
-	min-height: 50px;
-	border: 1px solid grey;
+	padding: 10px;
+	margin-right: 10px;
+	padding: 1em;
+	border: 1px solid rgb(197, 197, 197);
 }
-.info_name input[type="email"]{
-	width: 200px;
-}
-.info_name .message input{
+.contact__input__wrapper textarea{
 	display: flex;
 	width: 100%;
-	min-height: 200px;
 	background-color: none;
-	margin-top: 20px;
+	height: 130px;
+	padding: 0.8em;
+	outline: none;
+	margin-top: 2em;
+	margin-bottom: 25px;
+	border: 1px solid rgb(197, 197, 197);
 }
-.info_name button{
+.contact__input__wrapper button{
 	margin-top: 10px; 
     width: 40%;
     height: 60px;
@@ -867,7 +922,7 @@ nav ul li a:hover{
     transition: all .3s ease-in-out;
     border: 1px solid transparent;
 }
-.info_name button:hover{
+.contact__input__wrapper button:hover{
 	background: #fff;
     color: #333;
     border: 1px solid #333;
@@ -882,7 +937,7 @@ nav ul li a:hover{
 	padding: 30px;
 }
 .footer_content{
-	width: 60%;
+	width: 100%;
 	display: block;
 	background-color: none;
 	text-align: center;
